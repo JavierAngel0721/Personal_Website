@@ -537,10 +537,10 @@
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
-                  <img src="./assets/images/Github_logo.png" alt="CCD Sensor Board" loading="lazy">
+                  <img src="./assets/images/PCB.jpg" alt="CCD Sensor Board" loading="lazy">
                 </figure>
-                <h3 class="project-title">CCD Sensor Board Firmware</h3>
-                <p class="project-category">Embedded Systems</p>
+                <h3 class="project-title">SwRI CCD Driver PCB</h3>
+                <p class="project-category">PCB/Firmware</p>
               </a>
             </li>
 
@@ -731,25 +731,21 @@
 
       </article>
 
-      <!--
-        - #CONTACT
-      -->
-
+      <!-- - #CONTACT -->
       <article class="contact" data-page="contact">
 
         <header>
           <h2 class="h2 article-title">Contact</h2>
         </header>
+
         <section class="contact-form">
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
-
+          <form id="contact-form" class="form" data-form>
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="text" name="from_name" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="reply_to" class="form-input" placeholder="Email address" required data-form-input>
             </div>
 
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
@@ -758,7 +754,6 @@
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
           </form>
 
         </section>
@@ -769,7 +764,40 @@
 
   </main>
 
+<!-- Add EmailJS and script -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+  // Init EmailJS
+  (function() {
+    emailjs.init("6oFTrwobS0-QZiriQ"); // Replace with your EmailJS Public Key
+  })();
 
+  // Enable submit button only when all inputs are filled
+  const inputs = document.querySelectorAll('[data-form-input]');
+  const button = document.querySelector('[data-form-btn]');
+
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+      const allFilled = Array.from(inputs).every(field => field.value.trim() !== '');
+      button.disabled = !allFilled;
+    });
+  });
+
+  // Handle form submission
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_0dx24aj', 'template_nogslei', this)
+      .then(function(response) {
+        alert('✅ Message sent successfully!');
+        document.getElementById('contact-form').reset();
+        button.disabled = true;
+      }, function(error) {
+        alert('❌ Failed to send message. Please try again.');
+        console.error('EmailJS error:', error);
+      });
+  });
+</script>
 
 
 
