@@ -756,6 +756,7 @@
             </button>
           </form>
 
+
         </section>
 
       </article>
@@ -789,11 +790,11 @@
 
     emailjs.sendForm('service_0dx24aj', 'template_nogslei', this)
       .then(function(response) {
-        alert('✅ Message sent successfully!');
+        alert('Message sent successfully!');
         document.getElementById('contact-form').reset();
         button.disabled = true;
       }, function(error) {
-        alert('❌ Failed to send message. Please try again.');
+        alert('Failed to send message. Please try again.');
         console.error('EmailJS error:', error);
       });
   });
