@@ -519,12 +519,13 @@
             </button>
 
             <ul class="select-list">
-              <li class="select-item"><button data-select-item>All</button></li>
-              <li class="select-item"><button data-select-item>Embedded Systems</button></li>
-              <li class="select-item"><button data-select-item>PCB/Firmware</button></li>
-              <li class="select-item"><button data-select-item>Server & DevOps</button></li>
-              <li class="select-item"><button data-select-item>Web & Apps</button></li>
+              <li class="select-item"><button data-select-item onclick="filterProjects('All')">All</button></li>
+              <li class="select-item"><button data-select-item onclick="filterProjects('Embedded Systems')">Embedded Systems</button></li>
+              <li class="select-item"><button data-select-item onclick="filterProjects('PCB/Firmware')">PCB/Firmware</button></li>
+              <li class="select-item"><button data-select-item onclick="filterProjects('Server & DevOps')">Server & DevOps</button></li>
+              <li class="select-item"><button data-select-item onclick="filterProjects('Web & Apps')">Web & Apps</button></li>
             </ul>
+
           </div>
 
           <!-- Project List -->
@@ -866,6 +867,39 @@
     }
   };
 
+  function resetProjectView() {
+    document.getElementById("project-detail").style.display = "none";
+    document.querySelector(".project-list").style.display = "flex";
+    document.querySelector(".filter-select-box").style.display = "block";
+
+    // Reset dropdown label to "Select category"
+    const selectValue = document.querySelector('[data-select-value]');
+    if (selectValue) {
+      selectValue.textContent = "Select category";
+    }
+
+    // Reset all project items to visible
+    const projectItems = document.querySelectorAll(".project-item");
+    projectItems.forEach(item => {
+      item.style.display = "block";
+    });
+  }
+
+  function filterProjects(category) {
+    const projectItems = document.querySelectorAll(".project-item");
+
+    projectItems.forEach(item => {
+      const itemCategory = item.getAttribute("data-category");
+      if (category === "All" || itemCategory.includes(category)) {
+        item.classList.add("active");
+        item.style.display = "block";
+      } else {
+        item.classList.remove("active");
+        item.style.display = "none";
+      }
+    });
+  }
+
   function showProject(id) {
     const detail = projectData[id];
     if (!detail) return;
@@ -890,6 +924,13 @@
     document.querySelector(".project-list").style.display = "flex";
     document.querySelector(".filter-select-box").style.display = "block";
   }
+
+  // Reinitialize filtering when Projects tab is shown
+  document.querySelector('[data-page="projects"]').addEventListener("click", () => {
+    resetProjectView();
+    filterProjects("All");
+  });
+
 </script>
 
 
