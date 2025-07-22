@@ -507,46 +507,83 @@
           <h2>Projects</h2>
         </header>
 
-        <section>
-          <ul style="list-style: none; padding: 0; max-width: 600px;">
-            <li style="border: 1px solid #ccc; margin-bottom: 1rem; padding: 1rem; border-radius: 6px;">
-              <h3>SwRI CCD Driver PCB</h3>
-              <p><strong>Category:</strong> PCB/Firmware</p>
-              <p>This PCB drives a CCD sensor with precision timing, including analog front end and embedded firmware for real-time image sampling.</p>
-            </li>
+        <!-- Project List -->
+        <section class="project-list" id="project-list">
+          <div class="project-item" onclick="showProject('swri')">
+            <h3>SwRI CCD Driver PCB</h3>
+            <p><strong>Category:</strong> PCB/Firmware</p>
+          </div>
 
-            <li style="border: 1px solid #ccc; margin-bottom: 1rem; padding: 1rem; border-radius: 6px;">
-              <h3>Arduino-Based Projects</h3>
-              <p><strong>Category:</strong> Embedded Systems</p>
-              <p>A collection of Arduino projects covering robotics, sensors, and home automation.</p>
-            </li>
+          <div class="project-item" onclick="showProject('arduino')">
+            <h3>Arduino-Based Projects</h3>
+            <p><strong>Category:</strong> Embedded Systems</p>
+          </div>
 
-            <li style="border: 1px solid #ccc; margin-bottom: 1rem; padding: 1rem; border-radius: 6px;">
-              <h3>Raspberry Pi Home Projects</h3>
-              <p><strong>Category:</strong> Embedded Systems</p>
-              <p>Home automation, media servers, and network monitoring projects based on Raspberry Pi.</p>
-            </li>
+          <div class="project-item" onclick="showProject('raspberry')">
+            <h3>Raspberry Pi Home Projects</h3>
+            <p><strong>Category:</strong> Embedded Systems</p>
+          </div>
 
-            <li style="border: 1px solid #ccc; margin-bottom: 1rem; padding: 1rem; border-radius: 6px;">
-              <h3>HomeLab Server with Proxmox</h3>
-              <p><strong>Category:</strong> Server & DevOps</p>
-              <p>Virtualized HomeLab server environment setup using Proxmox VE for container and VM management.</p>
-            </li>
+          <div class="project-item" onclick="showProject('proxmox')">
+            <h3>HomeLab Server with Proxmox</h3>
+            <p><strong>Category:</strong> Server & DevOps</p>
+          </div>
+        </section>
 
-            <li style="border: 1px solid #ccc; margin-bottom: 1rem; padding: 1rem; border-radius: 6px;">
-              <h3>Liar's Bar Networked Game</h3>
-              <p><strong>Category:</strong> Server & DevOps / Web & Apps</p>
-              <p>A multiplayer web game using Node.js backend and real-time websockets.</p>
-            </li>
-
-            <li style="border: 1px solid #ccc; margin-bottom: 1rem; padding: 1rem; border-radius: 6px;">
-              <h3>3D Printing Projects</h3>
-              <p><strong>Category:</strong> 3D Printing</p>
-              <p>Various 3D printed parts and designs for robotics and hobby use.</p>
-            </li>
-          </ul>
+        <!-- Project Detail -->
+        <section class="project-detail" id="project-detail">
+          <h3 id="detail-title"></h3>
+          <p><strong id="detail-category"></strong></p>
+          <img id="detail-image" src="" alt="Project Image" />
+          <p id="detail-description"></p>
+          <button class="back-button" onclick="backToProjects()">← Back to Projects</button>
         </section>
       </article>
+
+      <script>
+        const projectData = {
+          swri: {
+            title: "SwRI CCD Driver PCB",
+            category: "PCB/Firmware",
+            image: "./assets/images/PCB.jpg",
+            description: "This PCB drives a CCD sensor with precision timing signals, including analog front end and embedded firmware for real-time image sampling."
+          },
+          arduino: {
+            title: "Arduino-Based Projects",
+            category: "Embedded Systems",
+            image: "./assets/images/Arduino.jpg",
+            description: "A collection of Arduino projects including robotics, sensor interfacing, and home automation."
+          },
+          raspberry: {
+            title: "Raspberry Pi Home Projects",
+            category: "Embedded Systems",
+            image: "./assets/images/Raspberry.jpg",
+            description: "Various projects using Raspberry Pi for home automation, media servers, and network monitoring."
+          },
+          proxmox: {
+            title: "HomeLab Server with Proxmox",
+            category: "Server & DevOps",
+            image: "./assets/images/Proxmox.png",
+            description: "Set up a virtualized HomeLab server environment using Proxmox VE for container and VM management."
+          }
+        };
+
+        function showProject(key) {
+          const data = projectData[key];
+          document.getElementById('project-list').style.display = 'none';
+          document.getElementById('project-detail').style.display = 'block';
+
+          document.getElementById('detail-title').textContent = data.title;
+          document.getElementById('detail-category').textContent = data.category;
+          document.getElementById('detail-image').src = data.image;
+          document.getElementById('detail-description').textContent = data.description;
+        }
+
+        function backToProjects() {
+          document.getElementById('project-detail').style.display = 'none';
+          document.getElementById('project-list').style.display = 'block';
+        }
+      </script>
 
 
 
