@@ -497,80 +497,44 @@
 
       </article>
 
-
       <!--
-        - #Projects
+        - #PROJECTS
       -->
 
-      <article class="projects" data-page="projects">
+      <article class="project" data-page="projects">
+
         <header>
           <h2 class="h2 article-title">Projects</h2>
         </header>
 
-        <!-- All Projects Grid -->
-        <section id="project-list" style="display: flex; flex-wrap: wrap; gap: 1rem; padding-top: 1rem;">
-          <!-- Example Project Cards -->
-          <div class="project-card" onclick="showProject('swri')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/PCB.jpg" alt="SwRI CCD Driver PCB" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">SwRI CCD Driver PCB</h3>
+        <!-- PROJECT LIST VIEW -->
+        <section id="project-list" class="projects-grid content-card">
+
+          <!-- Example project card -->
+          <div class="project-card" onclick="showProject('project1')">
+            <img src="images/project1_thumb.jpg" alt="Project 1 Thumbnail" class="project-img" />
+            <h3 class="h3 project-title">Project One</h3>
           </div>
 
-          <div class="project-card" onclick="showProject('arduino')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">Arduino-Based Projects</h3>
+          <div class="project-card" onclick="showProject('project2')">
+            <img src="images/project2_thumb.jpg" alt="Project 2 Thumbnail" class="project-img" />
+            <h3 class="h3 project-title">Project Two</h3>
           </div>
 
-          <!-- Raspberry Pi Home Projects -->
-          <div class="project-card" onclick="showProject('raspberry')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Raspberry.jpg" alt="Raspberry Pi" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">Raspberry Pi Home Projects</h3>
-          </div>
+          <!-- Add more projects here using same structure -->
 
-          <!-- HomeLab Server with Proxmox -->
-          <div class="project-card" onclick="showProject('proxmox')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Proxmox.png" alt="Proxmox Server" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">HomeLab Server with Proxmox</h3>
-          </div>
-
-          <!-- Liar's Bar Game -->
-          <div class="project-card" onclick="showProject('liars')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Liars.jpg" alt="Liar's Bar" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">Liar's Bar Networked Game</h3>
-          </div>
-
-          <!-- 3D Printing Projects -->
-          <div class="project-card" onclick="showProject('3dprinting')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Print.jpg" alt="3D Printing" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">3D Printing Projects</h3>
-          </div>
-
-          <!-- FPGA RTL Design -->
-          <div class="project-card" onclick="showProject('fpga')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/FPGA.jpg" alt="FPGA" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">FPGA RTL Design Using Verilog</h3>
-          </div>
-
-          <!-- Personal Website -->
-          <div class="project-card" onclick="showProject('web')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Web.jpg" alt="Web App" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">Personal Website using HTML, CSS, JS</h3>
-          </div>
-
-          <!-- Breadboarded Audio System -->
-          <div class="project-card" onclick="showProject('breadboard')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
-            <img src="./assets/images/Breadboard.jpg" alt="Breadboard" style="width: 100%; border-radius: 4px;">
-            <h3 style="margin-top: 0.5rem;">Breadboarded Home Audio System</h3>
-          </div>
         </section>
 
-        <!-- Detailed Project View -->
-        <section id="project-detail" style="display: none; margin-top: 2rem;">
-          <button onclick="closeProject()" style="margin-bottom: 1rem; padding: 0.5rem 1rem;">← Back to Projects</button>
-          <h2 id="detail-title"></h2>
-          <div id="detail-gallery" style="margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 1rem;"></div>
-          <p id="detail-description"></p>
+        <!-- PROJECT DETAIL VIEW -->
+        <section id="project-detail" class="content-card" style="display: none; padding: 2rem; text-align: center;">
+          <h3 id="detail-title" class="h3 article-title"></h3>
+          <p id="detail-description" class="project-description" style="max-width: 700px; margin: 1rem auto;"></p>
+          <div id="detail-gallery" class="project-gallery" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem;"></div>
+          <button onclick="closeProject()" class="form-btn" style="margin-top: 2rem;">← Back to Projects</button>
         </section>
+
       </article>
+
 
 
 
