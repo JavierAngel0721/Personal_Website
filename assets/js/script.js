@@ -157,34 +157,3 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
-
-const projects = {
-  swri: {
-    title: "SwRI CCD Driver PCB",
-    image: "./assets/images/PCB.jpg",
-    description: "Designed a high-precision PCB to drive a CCD image sensor, with firmware control and analog signal processing."
-  },
-  arduino: {
-    title: "Arduino-Based Projects",
-    image: "./assets/images/Arduino.jpg",
-    description: "Built robotics, sensors, and automation systems using Arduino microcontrollers."
-  },
-  proxmox: {
-    title: "HomeLab Server with Proxmox",
-    image: "./assets/images/Proxmox.png",
-    description: "Set up a virtualized server cluster using Proxmox for testing, home automation, and network services."
-  }
-};
-
-function showProject(key){
-  const project = projects[key];
-  if (!project) return;
-
-  document.getElementById("project-grid").style.display = "none";
-  document.getElementById("project-detail").style.display = "block";
-
-  document.getElementById("detail-title").textContent = project.title;
-  document.getElementById("detail-description").textContent = project.description;
-  document.getElementById("detail-image").src = project.image;
-  document.getElementById("detail-image").alt = project.title;
-}

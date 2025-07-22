@@ -502,36 +502,32 @@
         - #Projects
       -->
 
-      <article class="projects" data-page="projects" style="padding: 2rem;">
+      <article class="projects" data-page="projects">
         <header>
           <h2 class="h2 article-title">Projects</h2>
         </header>
 
-        <!-- Projects Grid -->
-        <div id="project-grid" style="display: flex; flex-wrap: wrap; gap: 1rem;">
-          <div class="project-card" onclick="showProject('swri')" style="cursor: pointer; border: 1px solid #ccc; padding: 1rem; width: 300px;">
-            <img src="./assets/images/PCB.jpg" alt="SwRI CCD Driver PCB" style="width: 100%;">
-            <h3>SwRI CCD Driver PCB</h3>
+        <!-- All Projects Grid -->
+        <section id="project-list" style="display: flex; flex-wrap: wrap; gap: 1rem; padding-top: 1rem;">
+          <!-- Example Project Cards -->
+          <div class="project-card" onclick="showProject('swri')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/PCB.jpg" alt="SwRI CCD Driver PCB" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">SwRI CCD Driver PCB</h3>
           </div>
 
-          <div class="project-card" onclick="showProject('arduino')" style="cursor: pointer; border: 1px solid #ccc; padding: 1rem; width: 300px;">
-            <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" style="width: 100%;">
-            <h3>Arduino-Based Projects</h3>
+          <div class="project-card" onclick="showProject('arduino')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">Arduino-Based Projects</h3>
           </div>
+        </section>
 
-          <div class="project-card" onclick="showProject('proxmox')" style="cursor: pointer; border: 1px solid #ccc; padding: 1rem; width: 300px;">
-            <img src="./assets/images/Proxmox.png" alt="Proxmox Server" style="width: 100%;">
-            <h3>HomeLab Server with Proxmox</h3>
-          </div>
-        </div>
-
-        <!-- Project Detail View -->
-        <div id="project-detail" style="display: none; margin-top: 2rem;">
-          <button onclick="closeProject()" style="margin-bottom: 1rem;">← Back to Projects</button>
+        <!-- Detailed Project View -->
+        <section id="project-detail" style="display: none; margin-top: 2rem;">
+          <button onclick="closeProject()" style="margin-bottom: 1rem; padding: 0.5rem 1rem;">← Back to Projects</button>
           <h2 id="detail-title"></h2>
-          <img id="detail-image" src="" alt="" style="max-width: 100%; border-radius: 4px; margin-bottom: 1rem;">
+          <div id="detail-gallery" style="margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 1rem;"></div>
           <p id="detail-description"></p>
-        </div>
+        </section>
       </article>
 
 
@@ -679,6 +675,54 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+  const projects = {
+    swri: {
+      title: "SwRI CCD Driver PCB",
+      description: "A precision driver PCB for a CCD sensor with analog signal path, real-time firmware, and synchronized control.",
+      images: [
+        "./assets/images/PCB.jpg",
+        "./assets/images/PCB_closeup.jpg" // Add more images if needed
+      ]
+    },
+    arduino: {
+      title: "Arduino-Based Projects",
+      description: "Includes robotics, sensors, automation, and control systems built with Arduino microcontrollers.",
+      images: [
+        "./assets/images/Arduino.jpg",
+        "./assets/images/Arduino_robot.jpg"
+      ]
+    }
+  };
+
+  function showProject(id) {
+    const project = projects[id];
+    if (!project) return;
+
+    document.getElementById("project-list").style.display = "none";
+    document.getElementById("project-detail").style.display = "block";
+
+    document.getElementById("detail-title").textContent = project.title;
+    document.getElementById("detail-description").textContent = project.description;
+
+    const gallery = document.getElementById("detail-gallery");
+    gallery.innerHTML = ""; // clear old images
+    project.images.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = project.title;
+      img.style.width = "300px";
+      img.style.borderRadius = "4px";
+      gallery.appendChild(img);
+    });
+  }
+
+  function closeProject() {
+    document.getElementById("project-detail").style.display = "none";
+    document.getElementById("project-list").style.display = "flex";
+  }
+</script>
 
 </body>
 
