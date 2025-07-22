@@ -904,6 +904,7 @@
     const detail = projectData[id];
     if (!detail) return;
 
+    // Fill in detail view
     document.getElementById("detail-title").textContent = detail.title;
     document.getElementById("detail-category").textContent = detail.category;
     document.getElementById("detail-description").innerHTML = `<p>${detail.description}</p>`;
@@ -914,22 +915,24 @@
     const linksHTML = (detail.links || []).map(link => `<p><a href="${link.url}" target="_blank">${link.text}</a></p>`).join("");
     document.getElementById("detail-links").innerHTML = linksHTML;
 
+    // ✅ Show the detail view, hide everything else
+    document.getElementById("project-detail").style.display = "block";
     document.querySelector(".project-list").style.display = "none";
     document.querySelector(".filter-select-box").style.display = "none";
-    document.getElementById("project-detail").style.display = "block";
   }
 
   function closeProject() {
     document.getElementById("project-detail").style.display = "none";
-    document.querySelector(".project-list").style.display = "flex";
+    document.querySelector(".project-list").style.display = "flex"; // <- Important: make it flex again
     document.querySelector(".filter-select-box").style.display = "block";
   }
 
+
   // Reinitialize filtering when Projects tab is shown
-  document.querySelector('[data-page="projects"]').addEventListener("click", () => {
-    resetProjectView();
+  window.addEventListener("DOMContentLoaded", () => {
     filterProjects("All");
   });
+
 
 </script>
 
