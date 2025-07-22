@@ -532,7 +532,7 @@
 
             <!-- Project Template -->
             <li class="project-item active" data-filter-item data-category="Embedded Systems">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('swri')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -545,7 +545,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="Embedded Systems">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('arduino')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -558,7 +558,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="Embedded Systems">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('raspberry')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -571,7 +571,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="Server & DevOps">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('proxmox')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -584,20 +584,20 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="Server & DevOps/Web & Apps">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('liars')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/Liars.jpg" alt="Liars Bar multiplayer game" loading="lazy">
                 </figure>
-                <h3 class="project-title">Fully Networked Liar's Bar videogame with GUI</h3>
+                <h3 class="project-title">Fully Networked "Liar's Bar" videogame with GUI</h3>
                 <p class="project-category">Server & DevOps/Web & Apps</p>
               </a>
             </li>
 
             <li class="project-item active" data-filter-item data-category="3D Printing">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('3dprinting')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -610,7 +610,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="PCB/Firmware">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('fpga')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -623,7 +623,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="Web & Apps">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('web')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -636,7 +636,7 @@
             </li>
 
             <li class="project-item active" data-filter-item data-category="Circuit Design/Embedded Systems">
-              <a href="#">
+              <a href="javascript:void(0)" onclick="showProject('breadboard')">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
@@ -649,6 +649,17 @@
             </li>
 
           </ul>
+
+          <!-- Project Detail View -->
+            <div id="project-detail" style="display: none; margin-top: 2rem;">
+              <button onclick="closeProject()" class="back-button">← Back to Projects</button>
+              <h2 id="detail-title"></h2>
+              <p id="detail-category" style="font-weight: bold;"></p>
+              <div id="detail-description" style="margin-bottom: 1rem;"></div>
+              <div id="detail-gallery" style="margin-bottom: 1rem;"></div>
+              <div id="detail-links"></div>
+            </div>
+
         </section>
       </article>
 
@@ -770,7 +781,7 @@
       button.disabled = !allFilled;
     });
   });
-
+  
   // Handle form submission
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -787,6 +798,99 @@
   });
 </script>
 
+<script>
+  const projectData = {
+    swri: {
+      title: "SwRI CCD Driver PCB",
+      category: "PCB/Firmware",
+      description: "This PCB was designed to drive a CCD sensor with precision timing signals. It includes an analog front end, precision op-amps, and embedded firmware for real-time image sampling.",
+      images: ["./assets/images/PCB.jpg"],
+      links: [
+        { text: "GitHub Repository", url: "https://github.com/yourusername/swri-ccd-driver" },
+        { text: "Presentation Slides", url: "./assets/docs/swri-presentation.pdf" }
+      ]
+    },
+    arduino: {
+      title: "Arduino-Based Projects",
+      category: "Embedded Systems",
+      description: "A series of robotics and control systems using Arduino. Projects include line-following bots, obstacle avoidance, and sensor networks.",
+      images: ["./assets/images/Arduino.jpg"],
+      links: [
+        { text: "View GitHub Repo", url: "https://github.com/yourusername/arduino-projects" }
+      ]
+    },
+    raspberry: {
+      title: "Raspberry Pi Home Projects",
+      category: "Embedded Systems",
+      description: "Home automation and media server setups using Raspberry Pi, including Pi-hole DNS blocking, file servers, and more.",
+      images: ["./assets/images/Raspberry.jpg"]
+    },
+    proxmox: {
+      title: "HomeLab Server with Proxmox",
+      category: "Server & DevOps",
+      description: "A self-hosted virtual server cluster using Proxmox VE for running VMs and containers including pfSense, Ubuntu, and Nextcloud.",
+      images: ["./assets/images/Proxmox.png"]
+    },
+    liars: {
+      title: "Liar's Bar Networked Game",
+      category: "Server & DevOps/Web & Apps",
+      description: "Multiplayer bluffing game with full GUI and server-client architecture. Designed for local network play with game state synchronization.",
+      images: ["./assets/images/Liars.jpg"],
+      links: [
+        { text: "GitHub Repository", url: "https://github.com/yourusername/liars-bar" }
+      ]
+    },
+    "3dprinting": {
+      title: "3D Printing Projects",
+      category: "3D Printing",
+      description: "Designs for practical 3D printed parts, cases, and mechanical components using Fusion 360 and printed on FDM printers.",
+      images: ["./assets/images/Print.jpg"]
+    },
+    fpga: {
+      title: "FPGA RTL Design Using Verilog",
+      category: "PCB/Firmware",
+      description: "RTL design of digital circuits using Verilog. Includes ALUs, UARTs, and waveform generators simulated in ModelSim and synthesized to FPGA.",
+      images: ["./assets/images/FPGA.jpg"]
+    },
+    web: {
+      title: "Personal Website using HTML, CSS, JS",
+      category: "Web & Apps",
+      description: "Fully responsive portfolio site with filtering and animations, built from scratch using vanilla HTML, CSS, and JS.",
+      images: ["./assets/images/Web.jpg"]
+    },
+    breadboard: {
+      title: "Breadboarded Home Audio System",
+      category: "Circuit Design/Embedded Systems",
+      description: "Analog and digital audio chain design on breadboard with class-D amplification, tone control, and Bluetooth input.",
+      images: ["./assets/images/Breadboard.jpg"]
+    }
+  };
+
+  function showProject(id) {
+    const detail = projectData[id];
+    if (!detail) return;
+
+    document.getElementById("detail-title").textContent = detail.title;
+    document.getElementById("detail-category").textContent = detail.category;
+    document.getElementById("detail-description").innerHTML = `<p>${detail.description}</p>`;
+
+    const galleryHTML = detail.images.map(img => `<img src="${img}" style="width: 300px; margin-right: 10px;">`).join("");
+    document.getElementById("detail-gallery").innerHTML = galleryHTML;
+
+    const linksHTML = (detail.links || []).map(link => `<p><a href="${link.url}" target="_blank">${link.text}</a></p>`).join("");
+    document.getElementById("detail-links").innerHTML = linksHTML;
+
+    document.querySelector(".project-list").style.display = "none";
+    document.querySelector(".filter-select-box").style.display = "none";
+    document.getElementById("project-detail").style.display = "block";
+  }
+
+  function closeProject() {
+    document.getElementById("project-detail").style.display = "none";
+    document.querySelector(".project-list").style.display = "flex";
+    document.querySelector(".filter-select-box").style.display = "block";
+  }
+</script>
 
 
 
