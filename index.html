@@ -721,9 +721,8 @@
           document.getElementById("detail-category").textContent = detail.category;
           document.getElementById("detail-description").innerHTML = `<p>${detail.description}</p>`;
 
-          // Show images
           const galleryDiv = document.getElementById("detail-gallery");
-          galleryDiv.innerHTML = ""; // Clear
+          galleryDiv.innerHTML = "";
           detail.images.forEach(src => {
             const img = document.createElement("img");
             img.src = src;
@@ -733,7 +732,6 @@
             galleryDiv.appendChild(img);
           });
 
-          // Show links
           const linksDiv = document.getElementById("detail-links");
           linksDiv.innerHTML = "";
           if (detail.links.length > 0) {
@@ -744,22 +742,20 @@
             });
           }
 
-          // Show detail, hide list and filter
+          // Show detail and hide projects list & filter specifically inside projects article
           document.getElementById("project-detail").style.display = "block";
-          document.querySelector(".project-list").style.display = "none";
-          document.querySelector(".filter-select-box").style.display = "none";
+          document.querySelector("article.projects .project-list").style.display = "none";
+          document.querySelector("article.projects .filter-select-box").style.display = "none";
         }
 
-        // Back to project list
         function closeProject() {
           document.getElementById("project-detail").style.display = "none";
-          document.querySelector(".project-list").style.display = "flex";
-          document.querySelector(".filter-select-box").style.display = "block";
+          document.querySelector("article.projects .project-list").style.display = "flex";
+          document.querySelector("article.projects .filter-select-box").style.display = "block";
         }
 
-        // Filter projects by category
         function filterProjects(category) {
-          const items = document.querySelectorAll(".project-item");
+          const items = document.querySelectorAll("article.projects .project-item");
           items.forEach(item => {
             const itemCategories = item.getAttribute("data-category").split("/");
             if (category === "All" || itemCategories.includes(category)) {
@@ -769,12 +765,12 @@
             }
           });
 
-          // Update dropdown text
-          document.querySelector("[data-select-value]").textContent = category;
+          document.querySelector("article.projects [data-select-value]").textContent = category;
 
-          // Show all if filtered out detail view
+          // Close detail view if open
           closeProject();
         }
+
 
         // Dropdown toggle behavior
         document.querySelector(".filter-select").addEventListener("click", () => {
