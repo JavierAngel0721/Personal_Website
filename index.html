@@ -502,88 +502,37 @@
         - #Projects
       -->
 
-      <article class="projects" data-page="projects">
+      <article class="projects" data-page="projects" style="padding: 2rem;">
         <header>
-          <h2>Projects</h2>
+          <h2 class="h2 article-title">Projects</h2>
         </header>
 
-        <!-- Project List -->
-        <section class="project-list" id="project-list">
-          <div class="project-item" onclick="showProject('swri')">
+        <!-- Projects Grid -->
+        <div id="project-grid" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+          <div class="project-card" onclick="showProject('swri')" style="cursor: pointer; border: 1px solid #ccc; padding: 1rem; width: 300px;">
+            <img src="./assets/images/PCB.jpg" alt="SwRI CCD Driver PCB" style="width: 100%;">
             <h3>SwRI CCD Driver PCB</h3>
-            <p><strong>Category:</strong> PCB/Firmware</p>
           </div>
 
-          <div class="project-item" onclick="showProject('arduino')">
+          <div class="project-card" onclick="showProject('arduino')" style="cursor: pointer; border: 1px solid #ccc; padding: 1rem; width: 300px;">
+            <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" style="width: 100%;">
             <h3>Arduino-Based Projects</h3>
-            <p><strong>Category:</strong> Embedded Systems</p>
           </div>
 
-          <div class="project-item" onclick="showProject('raspberry')">
-            <h3>Raspberry Pi Home Projects</h3>
-            <p><strong>Category:</strong> Embedded Systems</p>
-          </div>
-
-          <div class="project-item" onclick="showProject('proxmox')">
+          <div class="project-card" onclick="showProject('proxmox')" style="cursor: pointer; border: 1px solid #ccc; padding: 1rem; width: 300px;">
+            <img src="./assets/images/Proxmox.png" alt="Proxmox Server" style="width: 100%;">
             <h3>HomeLab Server with Proxmox</h3>
-            <p><strong>Category:</strong> Server & DevOps</p>
           </div>
-        </section>
+        </div>
 
-        <!-- Project Detail -->
-        <section class="project-detail" id="project-detail">
-          <h3 id="detail-title"></h3>
-          <p><strong id="detail-category"></strong></p>
-          <img id="detail-image" src="" alt="Project Image" />
+        <!-- Project Detail View -->
+        <div id="project-detail" style="display: none; margin-top: 2rem;">
+          <button onclick="closeProject()" style="margin-bottom: 1rem;">← Back to Projects</button>
+          <h2 id="detail-title"></h2>
+          <img id="detail-image" src="" alt="" style="max-width: 100%; border-radius: 4px; margin-bottom: 1rem;">
           <p id="detail-description"></p>
-          <button class="back-button" onclick="backToProjects()">← Back to Projects</button>
-        </section>
+        </div>
       </article>
-
-      <script>
-        const projectData = {
-          swri: {
-            title: "SwRI CCD Driver PCB",
-            category: "PCB/Firmware",
-            image: "./assets/images/PCB.jpg",
-            description: "This PCB drives a CCD sensor with precision timing signals, including analog front end and embedded firmware for real-time image sampling."
-          },
-          arduino: {
-            title: "Arduino-Based Projects",
-            category: "Embedded Systems",
-            image: "./assets/images/Arduino.jpg",
-            description: "A collection of Arduino projects including robotics, sensor interfacing, and home automation."
-          },
-          raspberry: {
-            title: "Raspberry Pi Home Projects",
-            category: "Embedded Systems",
-            image: "./assets/images/Raspberry.jpg",
-            description: "Various projects using Raspberry Pi for home automation, media servers, and network monitoring."
-          },
-          proxmox: {
-            title: "HomeLab Server with Proxmox",
-            category: "Server & DevOps",
-            image: "./assets/images/Proxmox.png",
-            description: "Set up a virtualized HomeLab server environment using Proxmox VE for container and VM management."
-          }
-        };
-
-        function showProject(key) {
-          const data = projectData[key];
-          document.getElementById('project-list').style.display = 'none';
-          document.getElementById('project-detail').style.display = 'block';
-
-          document.getElementById('detail-title').textContent = data.title;
-          document.getElementById('detail-category').textContent = data.category;
-          document.getElementById('detail-image').src = data.image;
-          document.getElementById('detail-description').textContent = data.description;
-        }
-
-        function backToProjects() {
-          document.getElementById('project-detail').style.display = 'none';
-          document.getElementById('project-list').style.display = 'block';
-        }
-      </script>
 
 
 
