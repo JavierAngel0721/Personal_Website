@@ -519,6 +519,48 @@
             <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" style="width: 100%; border-radius: 4px;">
             <h3 style="margin-top: 0.5rem;">Arduino-Based Projects</h3>
           </div>
+
+          <!-- Raspberry Pi Home Projects -->
+          <div class="project-card" onclick="showProject('raspberry')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Raspberry.jpg" alt="Raspberry Pi" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">Raspberry Pi Home Projects</h3>
+          </div>
+
+          <!-- HomeLab Server with Proxmox -->
+          <div class="project-card" onclick="showProject('proxmox')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Proxmox.png" alt="Proxmox Server" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">HomeLab Server with Proxmox</h3>
+          </div>
+
+          <!-- Liar's Bar Game -->
+          <div class="project-card" onclick="showProject('liars')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Liars.jpg" alt="Liar's Bar" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">Liar's Bar Networked Game</h3>
+          </div>
+
+          <!-- 3D Printing Projects -->
+          <div class="project-card" onclick="showProject('3dprinting')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Print.jpg" alt="3D Printing" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">3D Printing Projects</h3>
+          </div>
+
+          <!-- FPGA RTL Design -->
+          <div class="project-card" onclick="showProject('fpga')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/FPGA.jpg" alt="FPGA" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">FPGA RTL Design Using Verilog</h3>
+          </div>
+
+          <!-- Personal Website -->
+          <div class="project-card" onclick="showProject('web')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Web.jpg" alt="Web App" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">Personal Website using HTML, CSS, JS</h3>
+          </div>
+
+          <!-- Breadboarded Audio System -->
+          <div class="project-card" onclick="showProject('breadboard')" style="width: 300px; cursor: pointer; border: 1px solid #ccc; padding: 1rem;">
+            <img src="./assets/images/Breadboard.jpg" alt="Breadboard" style="width: 100%; border-radius: 4px;">
+            <h3 style="margin-top: 0.5rem;">Breadboarded Home Audio System</h3>
+          </div>
         </section>
 
         <!-- Detailed Project View -->
@@ -680,19 +722,48 @@
   const projects = {
     swri: {
       title: "SwRI CCD Driver PCB",
-      description: "A precision driver PCB for a CCD sensor with analog signal path, real-time firmware, and synchronized control.",
-      images: [
-        "./assets/images/PCB.jpg",
-        "./assets/images/PCB_closeup.jpg" // Add more images if needed
-      ]
+      description: "Precision driver PCB for a CCD sensor. Includes an analog front-end, op-amps, and embedded firmware for image sampling.",
+      images: ["./assets/images/PCB.jpg"]
     },
     arduino: {
       title: "Arduino-Based Projects",
-      description: "Includes robotics, sensors, automation, and control systems built with Arduino microcontrollers.",
-      images: [
-        "./assets/images/Arduino.jpg",
-        "./assets/images/Arduino_robot.jpg"
-      ]
+      description: "A collection of Arduino projects including robotics, home automation, and sensor interfacing.",
+      images: ["./assets/images/Arduino.jpg"]
+    },
+    raspberry: {
+      title: "Raspberry Pi Home Projects",
+      description: "Projects using Raspberry Pi for home automation, media servers, and custom Linux configurations.",
+      images: ["./assets/images/Raspberry.jpg"]
+    },
+    proxmox: {
+      title: "HomeLab Server with Proxmox",
+      description: "A virtualized homelab server using Proxmox VE for VM and container orchestration, monitoring, and backups.",
+      images: ["./assets/images/Proxmox.png"]
+    },
+    liars: {
+      title: "Liar's Bar Networked Game",
+      description: "A multiplayer bluffing game made with Node.js, Socket.io, and vanilla JS for real-time networking.",
+      images: ["./assets/images/Liars.jpg"]
+    },
+    "3dprinting": {
+      title: "3D Printing Projects",
+      description: "Custom-designed 3D printed parts and cases for electronics, tools, and home use.",
+      images: ["./assets/images/Print.jpg"]
+    },
+    fpga: {
+      title: "FPGA RTL Design Using Verilog",
+      description: "RTL digital logic design with Verilog targeting FPGA boards for signal processing and hardware control.",
+      images: ["./assets/images/FPGA.jpg"]
+    },
+    web: {
+      title: "Personal Website using HTML, CSS, JS",
+      description: "This very portfolio site! Built with HTML, CSS, JavaScript and responsive design principles.",
+      images: ["./assets/images/Web.jpg"]
+    },
+    breadboard: {
+      title: "Breadboarded Home Audio System",
+      description: "An analog amplifier system and EQ chain built entirely on breadboards with discrete components.",
+      images: ["./assets/images/Breadboard.jpg"]
     }
   };
 
@@ -707,7 +778,7 @@
     document.getElementById("detail-description").textContent = project.description;
 
     const gallery = document.getElementById("detail-gallery");
-    gallery.innerHTML = ""; // clear old images
+    gallery.innerHTML = "";
     project.images.forEach(src => {
       const img = document.createElement("img");
       img.src = src;
