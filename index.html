@@ -501,39 +501,66 @@
         - #PROJECTS
       -->
 
-      <article class="project" data-page="projects">
+      <article class="links" data-page="links">
 
         <header>
-          <h2 class="h2 article-title">Projects</h2>
+          <h2 class="h2 article-title">Links</h2>
         </header>
 
-        <!-- PROJECT LIST VIEW -->
-        <section id="project-list" class="projects-grid content-card">
+        <section class="links">
+          <div class="filter-select-box">
 
-          <!-- Example project card -->
-          <div class="project-card" onclick="showProject('project1')">
-            <img src="images/project1_thumb.jpg" alt="Project 1 Thumbnail" class="project-img" />
-            <h3 class="h3 project-title">Project One</h3>
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Applications</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+
+            </ul>
+
           </div>
+          <ul class="project-list">
+            <li class="social-item">
+              <a href="https://www.linkedin.com/in/javier-torres-quinones-03337a220/" class="social-link">
+                <img src="./assets/images/Linked_In.png" alt="Linked_In" width="80">
+              </a>
 
-          <div class="project-card" onclick="showProject('project2')">
-            <img src="images/project2_thumb.jpg" alt="Project 2 Thumbnail" class="project-img" />
-            <h3 class="h3 project-title">Project Two</h3>
-          </div>
+            </li>
 
-          <!-- Add more projects here using same structure -->
+            <li class="social-item">
+              <a href="https://github.com/JavierAngel0721" class="social-link">
+                <img src="./assets/images/Github_logo.png" alt="Github" width="80">
+              </a>
+            </li>
+          </ul>
 
-        </section>
-
-        <!-- PROJECT DETAIL VIEW -->
-        <section id="project-detail" class="content-card" style="display: none; padding: 2rem; text-align: center;">
-          <h3 id="detail-title" class="h3 article-title"></h3>
-          <p id="detail-description" class="project-description" style="max-width: 700px; margin: 1rem auto;"></p>
-          <div id="detail-gallery" class="project-gallery" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem;"></div>
-          <button onclick="closeProject()" class="form-btn" style="margin-top: 2rem;">← Back to Projects</button>
         </section>
 
       </article>
+
+
 
 
 
