@@ -512,81 +512,87 @@
 
             <!-- Project 1 -->
             <li class="social-item">
-              <a href="./assets/projects/swri.html" style="text-decoration: none; color: inherit;">
-                <img src="./assets/images/PCB.jpg" alt="SwRI CCD Driver PCB" style="width: 100%; border-radius: 4px;" />
-                <h3 style="margin-top: 0.5rem;">SwRI CCD Driver PCB</h3>
-              </a>
-              <p class="h4">SwRI CCD Driver PCB</p>
+              <img src="./assets/images/PCB.jpg" alt="SwRI CCD Driver PCB" style="width: 100%; border-radius: 4px;" />
+              <h3 style="margin-top: 0.5rem;">SwRI CCD Driver PCB</h3>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Developed firmware for CCD driver PCB for deep space imaging; worked with SwRI hardware team to meet timing specs.
+              </p>
             </li>
 
             <!-- Project 2 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" width="150">
-              </a>
+              <img src="./assets/images/Arduino.jpg" alt="Arduino Projects" width="150">
               <p class="h4">Arduino-Based Projects</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Built multiple Arduino-based systems for home automation, robotics, and sensor monitoring.
+              </p>
             </li>
 
             <!-- Project 3 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Raspberry.jpg" alt="Raspberry Pi" width="150">
-              </a>
+              <img src="./assets/images/Raspberry.jpg" alt="Raspberry Pi" width="150">
               <p class="h4">Raspberry Pi Home Projects</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Set up custom Pi-powered servers, dashboards, and automation systems at home.
+              </p>
             </li>
 
             <!-- Project 4 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Proxmox.png" alt="Proxmox Server" width="150">
-              </a>
+              <img src="./assets/images/Proxmox.png" alt="Proxmox Server" width="150">
               <p class="h4">HomeLab Server with Proxmox</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Deployed a self-hosted virtualization server using Proxmox for networking, NAS, and Docker containers.
+              </p>
             </li>
 
             <!-- Project 5 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Liars.jpg" alt="Liar's Bar Game" width="150">
-              </a>
+              <img src="./assets/images/Liars.jpg" alt="Liar's Bar Game" width="150">
               <p class="h4">Liar's Bar Networked Game</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Developed a networked multiplayer bluffing game in C# using Unity and socket programming.
+              </p>
             </li>
 
             <!-- Project 6 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Print.jpg" alt="3D Printing" width="150">
-              </a>
+              <img src="./assets/images/Print.jpg" alt="3D Printing" width="150">
               <p class="h4">3D Printing Projects</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Designed and printed functional parts using SolidWorks and slicers; created tools and device mounts.
+              </p>
             </li>
 
             <!-- Project 7 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/FPGA.jpg" alt="FPGA RTL Design" width="150">
-              </a>
+              <img src="./assets/images/FPGA.jpg" alt="FPGA RTL Design" width="150">
               <p class="h4">FPGA RTL Design Using Verilog</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Designed and tested digital logic systems in Verilog, including ALUs and UART interfaces.
+              </p>
             </li>
 
             <!-- Project 8 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Web.jpg" alt="Personal Website" width="150">
-              </a>
+              <img src="./assets/images/Web.jpg" alt="Personal Website" width="150">
               <p class="h4">Personal Website (HTML, CSS, JS)</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Built this interactive portfolio site with HTML, CSS, and vanilla JavaScript — fully responsive.
+              </p>
             </li>
 
             <!-- Project 9 -->
             <li class="social-item">
-              <a href="#" class="social-link">
-                <img src="./assets/images/Breadboard.jpg" alt="Breadboard Audio System" width="150">
-              </a>
+              <img src="./assets/images/Breadboard.jpg" alt="Breadboard Audio System" width="150">
               <p class="h4">Breadboarded Home Audio System</p>
+              <p style="color: #ccc; font-size: 0.9rem;">
+                Designed a stereo amplifier and audio preamp on breadboard with volume control and filtering.
+              </p>
             </li>
 
           </ul>
-
         </section>
-
       </article>
 
 
@@ -738,54 +744,6 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<script>
-  const projects = {
-    swri: {
-      title: "SwRI CCD Driver PCB",
-      description: "Firmware for PCB driving CCD sensor for deep space imaging, meeting system requirements.",
-      images: ["./assets/images/PCB.jpg"]
-    },
-    arduino: {
-      title: "Arduino-Based Projects",
-      description: "Various microcontroller projects using Arduino boards for home automation and robotics.",
-      images: ["./assets/images/Arduino.jpg"]
-    },
-    // Add the rest of your projects here in the same format
-  };
-
-  function showProject(id) {
-    const listSection = document.getElementById('project-list');
-    const detailSection = document.getElementById('project-detail');
-    const detailTitle = document.getElementById('detail-title');
-    const detailDescription = document.getElementById('detail-description');
-    const detailGallery = document.getElementById('detail-gallery');
-
-    // Hide the grid
-    listSection.style.display = 'none';
-
-    // Show detail
-    detailSection.style.display = 'block';
-
-    // Set title and description
-    detailTitle.textContent = projects[id].title;
-    detailDescription.textContent = projects[id].description;
-
-    // Clear and add images
-    detailGallery.innerHTML = '';
-    projects[id].images.forEach(imgSrc => {
-      const img = document.createElement('img');
-      img.src = imgSrc;
-      img.style.width = '300px';
-      img.style.borderRadius = '4px';
-      img.style.marginRight = '1rem';
-      detailGallery.appendChild(img);
-    });
-  }
-
-  function closeProject() {
-    document.getElementById('project-detail').style.display = 'none';
-    document.getElementById('project-list').style.display = 'flex';
-  }
 
 </script>
 
